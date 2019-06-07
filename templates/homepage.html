@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Python Flask Bucket List App</title>
+
+<!--
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet"> -->
+
+</head>
+
+<body align="center">
+
+
+  <form class="form-signup" method="POST">
+    <!-- UNCOMMENT WHEN DONE TESTING -->
+    <!-- Email: <input type="email" name="email1"><br> -->
+    Email: <input type="text" name="email1"><br>
+    Password: <input type="text" name="pass1"><br>
+    <div class="checkbox mb-3">
+
+      </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+
+
+  </form>
+  <br>
+  <div>
+    <p text="align-center">
+        {{message}}
+    </p>
+  </div>
+
+  <form class="form-login" method="POST">
+
+    <!-- UNCOMMENT WHEN DONE TESTING -->
+    <!-- Email: <input type="email" name="email2"><br> -->
+    Email: <input type="text" name="email2"><br>
+
+    Password: <input type="text" name="pass2"><br>
+    <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me or Don't
+        </label>
+      </div>
+
+    <button class="btn btn-lg btn-secondary btn-block" type="submit">Log in</button>
+
+  </form>
+  <br>
+  <div>
+    <p text="align-center">
+        {{message2}}
+    </p>
+  </div>
+
+  <!-- <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <p style="text-align:center;">Learn for free</p> -->
+<!--
+        <div class="jumbotron">
+            <h1>Bucket List App</h1>
+            <p class="lead"></p>
+            <p><a class="btn btn-lg btn-success" href="showSignUp" role="button">Sign up today</a>
+            </p>
+        </div>
+
+
+
+        <footer class="footer">
+            <p>&copy; Company 2015</p>
+        </footer>
+
+    </div> -->
+
+
+</body>
+
+</html>

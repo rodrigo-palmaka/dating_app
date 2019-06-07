@@ -1,0 +1,110 @@
+<input type='checkbox' name='cuis' value=1035>Afghan<br>
+<input type='checkbox' name='cuis' value=152>African<br>
+<input type='checkbox' name='cuis' value=1>American<br>
+<input type='checkbox' name='cuis' value=151>Argentine<br>
+<input type='checkbox' name='cuis' value=175>Armenian<br>
+<input type='checkbox' name='cuis' value=3>Asian<br>
+<input type='checkbox' name='cuis' value=193>BBQ<br>
+<input type='checkbox' name='cuis' value=955>Bagels<br>
+<input type='checkbox' name='cuis' value=5>Bakery<br>
+<input type='checkbox' name='cuis' value=227>Bar Food<br>
+<input type='checkbox' name='cuis' value=132>Belgian<br>
+<input type='checkbox' name='cuis' value=270>Beverages<br>
+<input type='checkbox' name='cuis' value=159>Brazilian<br>
+<input type='checkbox' name='cuis' value=182>Breakfast<br>
+<input type='checkbox' name='cuis' value=133>British<br>
+<input type='checkbox' name='cuis' value=247>Bubble Tea<br>
+<input type='checkbox' name='cuis' value=168>Burger<br>
+<input type='checkbox' name='cuis' value=22>Burmese<br>
+<input type='checkbox' name='cuis' value=30>Cafe<br>
+<input type='checkbox' name='cuis' value=491>Cajun<br>
+<input type='checkbox' name='cuis' value=956>California<br>
+<input type='checkbox' name='cuis' value=158>Caribbean<br>
+<input type='checkbox' name='cuis' value=229>Chilean<br>
+<input type='checkbox' name='cuis' value=25>Chinese<br>
+<input type='checkbox' name='cuis' value=161>Coffee and Tea<br>
+<input type='checkbox' name='cuis' value=928>Creole<br>
+<input type='checkbox' name='cuis' value=881>Crepes<br>
+<input type='checkbox' name='cuis' value=153>Cuban<br>
+<input type='checkbox' name='cuis' value=192>Deli<br>
+<input type='checkbox' name='cuis' value=100>Desserts<br>
+<input type='checkbox' name='cuis' value=411>Dim Sum<br>
+<input type='checkbox' name='cuis' value=541>Diner<br>
+<input type='checkbox' name='cuis' value=959>Donuts<br>
+<input type='checkbox' name='cuis' value=268>Drinks Only<br>
+<input type='checkbox' name='cuis' value=651>Eastern European<br>
+<input type='checkbox' name='cuis' value=149>Ethiopian<br>
+<input type='checkbox' name='cuis' value=38>European<br>
+<input type='checkbox' name='cuis' value=40>Fast Food<br>
+<input type='checkbox' name='cuis' value=112>Filipino<br>
+<input type='checkbox' name='cuis' value=298>Fish and Chips<br>
+<input type='checkbox' name='cuis' value=318>Fondue<br>
+<input type='checkbox' name='cuis' value=45>French<br>
+<input type='checkbox' name='cuis' value=501>Frozen Yogurt<br>
+<input type='checkbox' name='cuis' value=274>Fusion<br>
+<input type='checkbox' name='cuis' value=134>German<br>
+<input type='checkbox' name='cuis' value=156>Greek<br>
+<input type='checkbox' name='cuis' value=181>Grill<br>
+<input type='checkbox' name='cuis' value=521>Hawaiian<br>
+<input type='checkbox' name='cuis' value=143>Healthy Food<br>
+<input type='checkbox' name='cuis' value=233>Ice Cream<br>
+<input type='checkbox' name='cuis' value=148>Indian<br>
+<input type='checkbox' name='cuis' value=114>Indonesian<br>
+<input type='checkbox' name='cuis' value=154>International<br>
+<input type='checkbox' name='cuis' value=140>Iranian<br>
+<input type='checkbox' name='cuis' value=135>Irish<br>
+<input type='checkbox' name='cuis' value=55>Italian<br>
+<input type='checkbox' name='cuis' value=207>Jamaican<br>
+<input type='checkbox' name='cuis' value=60>Japanese<br>
+<input type='checkbox' name='cuis' value=164>Juices<br>
+<input type='checkbox' name='cuis' value=178>Kebab<br>
+<input type='checkbox' name='cuis' value=67>Korean<br>
+<input type='checkbox' name='cuis' value=901>Laotian<br>
+<input type='checkbox' name='cuis' value=136>Latin American<br>
+<input type='checkbox' name='cuis' value=66>Lebanese<br>
+<input type='checkbox' name='cuis' value=69>Malaysian<br>
+<input type='checkbox' name='cuis' value=70>Mediterranean<br>
+<input type='checkbox' name='cuis' value=73>Mexican<br>
+<input type='checkbox' name='cuis' value=137>Middle Eastern<br>
+<input type='checkbox' name='cuis' value=74>Mongolian<br>
+<input type='checkbox' name='cuis' value=147>Moroccan<br>
+<input type='checkbox' name='cuis' value=117>Nepalese<br>
+<input type='checkbox' name='cuis' value=996>New American<br>
+<input type='checkbox' name='cuis' value=962>Nicaraguan<br>
+<input type='checkbox' name='cuis' value=321>Pacific<br>
+<input type='checkbox' name='cuis' value=139>Pakistani<br>
+<input type='checkbox' name='cuis' value=183>Patisserie<br>
+<input type='checkbox' name='cuis' value=162>Peruvian<br>
+<input type='checkbox' name='cuis' value=82>Pizza<br>
+<input type='checkbox' name='cuis' value=219>Polish<br>
+<input type='checkbox' name='cuis' value=87>Portuguese<br>
+<input type='checkbox' name='cuis' value=983>Pub Food<br>
+<input type='checkbox' name='cuis' value=361>Puerto Rican<br>
+<input type='checkbox' name='cuis' value=320>Ramen<br>
+<input type='checkbox' name='cuis' value=84>Russian<br>
+<input type='checkbox' name='cuis' value=998>Salad<br>
+<input type='checkbox' name='cuis' value=601>Salvadorean<br>
+<input type='checkbox' name='cuis' value=304>Sandwich<br>
+<input type='checkbox' name='cuis' value=83>Seafood<br>
+<input type='checkbox' name='cuis' value=128>Sichuan<br>
+<input type='checkbox' name='cuis' value=119>Singaporean<br>
+<input type='checkbox' name='cuis' value=461>Soul Food<br>
+<input type='checkbox' name='cuis' value=267>South African<br>
+<input type='checkbox' name='cuis' value=972>South American<br>
+<input type='checkbox' name='cuis' value=471>Southern<br>
+<input type='checkbox' name='cuis' value=966>Southwestern<br>
+<input type='checkbox' name='cuis' value=89>Spanish<br>
+<input type='checkbox' name='cuis' value=141>Steak<br>
+<input type='checkbox' name='cuis' value=177>Sushi<br>
+<input type='checkbox' name='cuis' value=997>Taco<br>
+<input type='checkbox' name='cuis' value=190>Taiwanese<br>
+<input type='checkbox' name='cuis' value=179>Tapas<br>
+<input type='checkbox' name='cuis' value=163>Tea<br>
+<input type='checkbox' name='cuis' value=964>Teriyaki<br>
+<input type='checkbox' name='cuis' value=150>Tex-Mex<br>
+<input type='checkbox' name='cuis' value=95>Thai<br>
+<input type='checkbox' name='cuis' value=761>Tunisian<br>
+<input type='checkbox' name='cuis' value=142>Turkish<br>
+<input type='checkbox' name='cuis' value=308>Vegetarian<br>
+<input type='checkbox' name='cuis' value=641>Venezuelan<br>
+<input type='checkbox' name='cuis' value=99>Vietnamese<br>

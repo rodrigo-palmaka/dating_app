@@ -1,0 +1,18 @@
+<script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
+
+<body class="yui3-skin-sam"> 
+<script>
+// Create a new YUI instance and populate it with the required modules.
+YUI().use('calendar', function (Y) {
+  var calendar = new Y.Calendar({
+        contentBox: "#mycalendar",
+        height:'200px',
+        width:'600px',
+        showPrevMonth: true,
+        showNextMonth: true,
+        date: new Date(1982,11,1)}).render();
+</script>
+
+<!-- You need this skin class -->
+
+  </body>

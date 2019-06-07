@@ -1,0 +1,3 @@
+Client ID = 1025826547127-0o6e6ef68gvgbpsaluurgi31sj9tnkgd.apps.googleusercontent.com
+
+Client Secret = 7ofPOfSyy-o5ljXLM0hjmA3J

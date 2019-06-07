@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <body>
+
+
+    <h2>
+      Personal Information:
+      </h2>
+      <br>
+      <form method="POST">
+
+
+
+          Age: <input type="number" name="age"><br>
+          Location (City): <input type="text" name="location"><br>
+          {{city}}<br>
+
+          Sex:
+              <select name="sex">
+              <option value=0> Male </option>
+              <option value=1> Female </option>
+            <option value=2> Other </option>
+            </select>
+            <br><br>
+
+
+
+
+    <h2> Set Your Date Preferences </h2>
+
+
+
+        <p> Budget: </p><br>
+        <input type="radio" name="budget" value ="0" checked>$<br>
+        <input type="radio" name="budget" value ="1">$$<br>
+        <input type="radio" name="budget" value ="2">$$$<br>
+        <input type="radio" name="budget" value ="3">$$$$<br>
+
+
+        <!-- add hiker emoticons -->
+        <p> Activeness: </p><br>
+        <input type="radio" name="active" value="0" checked> Light <br>
+        <input type="radio" name="active" value="1"> Moderate <br>
+        <input type="radio" name="active" value="2"> Athletic <br>
+
+        <p>Favorite Cuisines: </p>
+        <!-- "<input type="checkbox" name="+i+" value="+get_cuisine(i)+"> Italian <br>" -->
+        <input type='checkbox' name='cuis' value="Asian">Asian
+        <input type='checkbox' name='cuis' value="American">American<br>
+        <input type='checkbox' name='cuis' value="Breakfast">Breakfast
+        <input type='checkbox' name='cuis' value="Bubble_Tea">Bubble Tea<br>
+        <input type='checkbox' name='cuis' value="Cafe">Cafe
+        <input type='checkbox' name='cuis' value="Fast_Food">Fast Food<br>
+        <input type='checkbox' name='cuis' value="Indian">Indian
+        <input type='checkbox' name='cuis' value="Italian">Italian<br>
+        <input type='checkbox' name='cuis' value="Mediterranean">Mediterranean
+        <input type='checkbox' name='cuis' value="Mexican">Mexican<br>
+        <input type='checkbox' name='cuis' value="Pizza">Pizza
+        <br><br>
+        <input type="submit">
+
+        </form>
+
+
+
+    </body>
+
+
+
+</html>
