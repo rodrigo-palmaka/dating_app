@@ -39,7 +39,8 @@ class find_restaurant:
         except IndexError:
             return False
 
-
+    # params: (String) cuisine name
+    # return: (int) Zomato cuisine_id
     def get_cuisine(self, cuisine):
         # global cuisine_ID
         try:

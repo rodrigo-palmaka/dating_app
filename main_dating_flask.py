@@ -135,13 +135,16 @@ def dash(id):
 def sugg(id, selectDate):
     # a = request.form['test']
     fd = find_restaurant()
-    userCity = #//TODO: finish db helper to get all cuisines
+    userCity = handle.getCuis(id) #//TODO: finish db helper to get all cuisines
+    print(userCity)
+    return 'done'
+    '''
     fd.get_cuisine(cuisVar)
     fd.get_rest_list(food.city_ID, food.cuisine_ID)
 
     return render_template('suggest.html', selectDate=selectDate, sugg=sugg)
 
-
+    '''
 
 
 

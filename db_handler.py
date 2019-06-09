@@ -26,7 +26,8 @@ def toPref(var, column, user_id):
 
 
 # // / / / / / / / / // /  // / / / / / / / / / / / / / / / / / // // / //
-
+# params: user email
+# return: user signup ID
 def getID(em):
     conn = sqlite3.connect('signup.db')
     cur = conn.cursor()
@@ -34,6 +35,8 @@ def getID(em):
     moo = cur.fetchall()
     return moo
 
+# params: user id
+# return: user email
 def getUser(id):
     conn = sqlite3.connect('signup.db')
     cur = conn.cursor()
@@ -41,15 +44,31 @@ def getUser(id):
     yoo = cur.fetchall()
     return yoo[0][0]
 
+# params: user id
+# return: (str[]) cuisine preferences
 def getCuis(id):
-     conn = sqlite3.connect('signup.db')
-     cur = conn.cursor()
-     cur.execute("""SELECT Cname FROM   Tablename
-                CROSS apply (VALUES('Field1',Field1),
-                          ('Field2',Field2),
-                          ('Field3',Field3),
-                          ('Field4',Field4)) ca (cname, data)
-                        WHERE  data = 1""")
+    conn = sqlite3.connect('signup.db')
+    cur = conn.cursor()
+     # cur.execute("""SELECT cname FROM preferences
+     #            CROSS apply ( VALUES ('Asian', Asian),
+     #                                ('American', American),
+     #                                ('Breakfast', Breakfast),
+     #                                ('Bubble_Tea', Bubble_Tea),
+     #                                ('Cafe', Cafe),
+     #                                ('Fast_Food', Fast_Food),
+     #                                ('Indian', Indian),
+     #                                ('Italian', Italian),
+     #                                ('Mediterranean', Mediterranean),
+     #                                ('Mexican', Mexican),
+     #                                ('Pizza', Pizza)) ca (cname, data)
+     #            WHERE data = 1""")
+
+    cur.execute("""select        case
+    when Asian = 1 and id = """+id+""" then 'Asian'
+    end as List
+	from preferences""")
+    boo = cur.fetchall()
+    return boo
 
 def validateLogin(em, passw):
     # returns BOOL: T if exists/F if not
