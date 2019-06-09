@@ -20,7 +20,7 @@ def main():
 def sign():
    if request.method == 'POST':
 
-      try:
+      # try:
           ## SIGN-UP
            email = request.form['email1']
            password = request.form['pass1']
@@ -33,7 +33,7 @@ def sign():
            else:
                return main2(signError="Email already used!")
 
-      except:
+      # except:
            ##LOG-IN
            email = request.form['email2']
            password = request.form['pass2']
@@ -126,20 +126,25 @@ def dash(id):
 
 #
 # # @app.route('/suggestions/<id>')
+
+
 # @app.route('/dashboard/<id>/<selectDate>')
 # def suggestPage(id, selectDate):
 #     # user = handle.getUser(id)
-#     return render_template('suggest.html', selectDate=selectDate)
-#
+#     return render_template('suggest.html', id=id, selectDate=selectDate)
+
 @app.route('/dashboard/<id>/<selectDate>', methods=["GET", "POST"])
 def sugg(id, selectDate):
     # a = request.form['test']
     fd = find_restaurant()
-    userCity = handle.getCuis(id) #//TODO: finish db helper to get all cuisines
+    userCuis = handle.getCuis(id) #//TODO: finish db helper to get all cuisines
+    cuisIDs = {}
+        fd.get_cuisine(i)
+    print(id)
     print(userCity)
     return 'done'
-    '''
-    fd.get_cuisine(cuisVar)
+
+
     fd.get_rest_list(food.city_ID, food.cuisine_ID)
 
     return render_template('suggest.html', selectDate=selectDate, sugg=sugg)
