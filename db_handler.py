@@ -49,21 +49,6 @@ def getUser(id):
 def getCuis(id):
     conn = sqlite3.connect('signup.db')
     cur = conn.cursor()
-     # cur.execute("""SELECT cname FROM preferences
-     #            CROSS apply ( VALUES ('Asian', Asian),
-     #                                ('American', American),
-     #                                ('Breakfast', Breakfast),
-     #                                ('Bubble_Tea', Bubble_Tea),
-     #                                ('Cafe', Cafe),
-     #                                ('Fast_Food', Fast_Food),
-     #                                ('Indian', Indian),
-     #                                ('Italian', Italian),
-     #                                ('Mediterranean', Mediterranean),
-     #                                ('Mexican', Mexican),
-     #                                ('Pizza', Pizza)) ca (cname, data)
-     #            WHERE data = 1""")
-
-
 
     cur.execute("""select 'Asian' from preferences where Asian = 1 AND id = """+id+""" union all
                    select 'American' from preferences where American = 1 AND id = """+id+""" union all
@@ -77,30 +62,16 @@ def getCuis(id):
                    select 'Mexican' from preferences where Mexican = 1 AND id = """+id+""" union all
                    select 'Pizza' from preferences where Pizza = 1 AND id = """ + id)
 
-    # cur.execute("""select 'Asian' from preferences where Asian = 1 AND id = 3 union all
-    #                select 'American' from preferences where American = 1 AND id = 3 union all
-    #                select 'Breakfast' from preferences where Breakfast = 1 AND id = 3 union all
-    #                select 'Bubble_Tea' from preferences where Bubble_Tea = 1 AND id = 3""")
-    # '''
-    # cur.execute("""select        case
-    #
-    # when American = 1 and id = 3 then 'American'
-    # when Breakfast = 1 and id = 3 then 'Breakfast'
-    # when Bubble_Tea = 1 and id = 3 then 'Bubble_Tea'
-    # when Cafe = 1 and id = 3 then 'Cafe'
-    # when Fast_Food = 1 and id = 3 then 'Fast_Food'
-    # when Indian = 1 and id = 3 then 'Indian'
-    # when Italian = 1 and id = 3 then 'Italian'
-    # when Mediterranean = 1 and id = 3 then 'Mediterranean'
-    # when Mexican = 1 and id = 3 then 'Mexican'
-    # when Pizza = 1 and id = 3 then 'Pizza'
-    #
-    # end as List
-	# from preferences""")
-    # '''
+
     boo = cur.fetchall()
     return boo
 
+def getCityID(id):
+    conn = sqlite3.connect('signup.db')
+    cur = conn.cursor()
+    cur.execute("SELECT city_id FROM preferences WHERE id =" +id)
+    joo = cur.fetchall()
+    return joo
 def validateLogin(em, passw):
     # returns BOOL: T if exists/F if not
     # //TODO: check if email and password match

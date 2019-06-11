@@ -46,7 +46,7 @@ class find_restaurant:
         try:
             r = requests.get(url = self.base + "cuisines", headers = self.headers, params = {"city_id" : self.city_ID})
             data = r.json()
-            # print(data)
+
             cus_index = data['cuisines']
             for i in cus_index:
                 if i['cuisine']['cuisine_name'].lower() == cuisine.lower():
@@ -58,6 +58,9 @@ class find_restaurant:
             print("Invalid Cuisine")
 
 
+    # params: (int) city the city_ID
+            # (int[]) list [comma separated] of cuisine IDs
+    # return: (void) populates self.res_list - only names, self.res_dict - names -> rest info
     def get_rest_list(self, city, cuis):
         # global rest_dict
         try:
@@ -69,13 +72,17 @@ class find_restaurant:
             self.res_list = []
             self.res_dict = {}
             for i in rest_index:
-                self.res_list.append(i['restaurant']['name'])
-                self.res_dict[i['restaurant']['name'].lower()] = i['restaurant']
+                name = i['restaurant']['name']
+                count = 1
+                # if name in res_dict.keys():
+                while name in self.res_dict.keys():
+                    count += 1
+                    name = name + "_{1}".format(count)
+                # self.res_dict[i['restaurant']['name'] + "_{1}".format(count)] = i['restaurant']
+                self.res_list.append(name)
+                self.res_dict[name] = i['restaurant']
                 # print(i['restaurant']['name'])
 
-            # print(data)
-            # print(data)
-                # cuisine_ID =
         except IndexError:
             print("Invalid Query")
 

@@ -137,19 +137,38 @@ def dash(id):
 def sugg(id, selectDate):
     # a = request.form['test']
     fd = find_restaurant()
-    userCuis = handle.getCuis(id) #//TODO: finish db helper to get all cuisines
+    fd.city_ID = handle.getCityID(id)
+    rawCuis = handle.getCuis(id)
     cuisIDs = {}
-        fd.get_cuisine(i)
-    print(id)
-    print(userCity)
-    return 'done'
+    for i in rawCuis:
+        # print(i[0])
+        a = i[0].replace("_", " ")
+        # TODO: fix output to recognize cuisineID of cuisines w underscore ex.: Bubble_Tea
+        cuisIDs[a] = fd.get_cuisine(a)
+        cuisList = list(cuisIDs.values())
+    fd.get_rest_list(fd.city_ID, cuisList)
+    # shortList = fd.res_list[:5]
+
+    #
+    shortList = []
+    print(fd.res_dict.keys())
+    count = 0
+    for k, v in fd.res_dict.items():
+        if count >= 5:
+            break
+        shortList.append(k +' '+ v['location']['address'])
+        # count += 1
+    #     shortList.append(v['name'])
 
 
-    fd.get_rest_list(food.city_ID, food.cuisine_ID)
+    # return 'done'
 
-    return render_template('suggest.html', selectDate=selectDate, sugg=sugg)
 
-    '''
+
+
+    return render_template('suggest.html', selectDate=selectDate, sugg=shortList)
+
+
 
 
 
