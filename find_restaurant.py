@@ -100,7 +100,7 @@ class find_restaurant:
             return self.res_list, self.res_dict
 
         # except IndexError:
-        #     print("Invalid Query")
+            # print("Invalid Query")
 
     def get_rest_info(self, name):
         return self.res_dict[name.lower()]['url']

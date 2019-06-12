@@ -73,6 +73,13 @@ def getCityID(id):
     joo = cur.fetchall()
     return joo
 
+def getCityName(id):
+    conn = sqlite3.connect('signup.db')
+    cur = conn.cursor()
+    cur.execute("SELECT city_name FROM preferences WHERE id =" +id)
+    xoo = cur.fetchall()
+    return xoo
+
 def getBudget(id):
     conn = sqlite3.connect('signup.db')
     cur = conn.cursor()

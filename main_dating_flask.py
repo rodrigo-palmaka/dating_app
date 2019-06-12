@@ -20,7 +20,7 @@ def main():
 def sign():
    if request.method == 'POST':
 
-      try:
+      # try:
           ## SIGN-UP
            email = request.form['email1']
            password = request.form['pass1']
@@ -34,7 +34,7 @@ def sign():
            elif not insert:
                return main2(signError="Email already used!")
 
-      except:
+      # except:
            ##LOG-IN
            email = request.form['email2']
            password = request.form['pass2']
@@ -64,6 +64,7 @@ def setPrefs(id):
     location = request.form['location']
     if find.get_city_ID(location):
         city_id = find.city_ID
+        handle.toPref(location, "city_name", id)
         handle.toPref(city_id, "city_id", id)
         # print(city_id)
     else:
@@ -115,8 +116,8 @@ def dashPage(id):
 @app.route('/dashboard/<id>', methods=["GET", "POST"])
 def dash(id):
     if request.method == "POST":
-        selectDate = request.form['selectDate']
-        objDate = datetime.strptime(selectDate, '%Y-%m-%d')
+        selectedDate = request.form['selectDate']
+        objDate = datetime.strptime(selectedDate, '%Y-%m-%d')
         s = datetime.strftime(objDate,'%b %d, %Y')
 
         return redirect(url_for('sugg', id=id, selectDate=s))
@@ -178,6 +179,10 @@ def sugg(id, selectDate):
         price = pricer(str(v['price_range']))
         bigList.append(k +': '+ v['location']['address'] + " | " + "User Rating: " + v['user_rating']['aggregate_rating']
             + " | " + "Price: " + price)
+
+    city = handle.getCityName(id)
+    ev.getEvent(city, selectDate)
+
 
         # shortList.append(v['name'])
     return render_template('suggest.html', selectDate=selectDate, sugg=bigList)
