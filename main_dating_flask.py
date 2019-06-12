@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, redirect, url_for
 from find_restaurant import find_restaurant
 import sqlite3
 import db_handler as handle
+import find_events as ev
 from datetime import datetime
 
 
