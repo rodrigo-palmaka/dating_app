@@ -72,8 +72,17 @@ def getCityID(id):
     cur.execute("SELECT city_id FROM preferences WHERE id =" +id)
     joo = cur.fetchall()
     return joo
+
+def getBudget(id):
+    conn = sqlite3.connect('signup.db')
+    cur = conn.cursor()
+    cur.execute("SELECT budget FROM preferences WHERE id =" +id)
+    too = cur.fetchall()
+    return too
+
+# return: (BOOL) T if exists/F if not
 def validateLogin(em, passw):
-    # returns BOOL: T if exists/F if not
+
     # //TODO: check if email and password match
     conn = sqlite3.connect('signup.db')
     cur = conn.cursor()

@@ -20,28 +20,30 @@ def main():
 def sign():
    if request.method == 'POST':
 
-      # try:
+      try:
           ## SIGN-UP
            email = request.form['email1']
            password = request.form['pass1']
-
-           if handle.insertUser(email, password):
-          # //TODO: redirect to preferences input page
+           if not password:
+               return main2(signError="Invalid Password!")
+           # returns false if email taken
+           insert = handle.insertUser(email, password)
+           if insert:
                id = handle.getID(email)
-               # print(id[0][0])
                return redirect(url_for('setPrefs', id=id[0][0]))
-           else:
+           elif not insert:
                return main2(signError="Email already used!")
 
-      # except:
+      except:
            ##LOG-IN
            email = request.form['email2']
            password = request.form['pass2']
+
            id = handle.getID(email)
            if handle.validateLogin(email, password):
                return redirect(url_for('dash', id=id))
            else:
-               return main2(logError="Wrong email or password")
+               return main2(logError="Incorrect email or password!")
 
            # //TODO: redirect to welcome pg w calendar
            # return redirect(url_for('cityQuery'))
@@ -59,8 +61,6 @@ def prefPage(id):
 def setPrefs(id):
     find = find_restaurant()
 
-
-    #City_id
     location = request.form['location']
     if find.get_city_ID(location):
         city_id = find.city_ID
@@ -118,15 +118,8 @@ def dash(id):
         selectDate = request.form['selectDate']
         objDate = datetime.strptime(selectDate, '%Y-%m-%d')
         s = datetime.strftime(objDate,'%b %d, %Y')
-        # s = objDate.strftime("%B")
-        # return suggestPage(id, selectDate)
-        # user = handle.getUser(id)
+
         return redirect(url_for('sugg', id=id, selectDate=s))
-        # return render_template('suggest.html', selectDate=s)
-
-#
-# # @app.route('/suggestions/<id>')
-
 
 # @app.route('/dashboard/<id>/<selectDate>')
 # def suggestPage(id, selectDate):
@@ -146,76 +139,57 @@ def sugg(id, selectDate):
         # TODO: fix output to recognize cuisineID of cuisines w underscore ex.: Bubble_Tea
         cuisIDs[a] = fd.get_cuisine(a)
         cuisList = list(cuisIDs.values())
-    fd.get_rest_list(fd.city_ID, cuisList)
-    # shortList = fd.res_list[:5]
 
-    #
-    shortList = []
-    print(fd.res_dict.keys())
-    count = 0
-    for k, v in fd.res_dict.items():
-        if count >= 5:
-            break
-        shortList.append(k +' '+ v['location']['address'])
-        # count += 1
-    #     shortList.append(v['name'])
+    # combines all cuisine dicts, lists into one
+    listOf3 = []
+    dictOf3 = {}
+    userBudget = handle.getBudget(id)[0][0]
+    print(userBudget)
+
+    while not listOf3:
+        for i in cuisList:
+            # returns 20 restaurants from each cuisine type
+            lis, dic = fd.get_rest_list(fd.city_ID, i)
+            num = 1
+            # only gets 3 options of each cuis
+            for j, t in dic.items():
+                if num > 2:
+                    break
+
+                if t['price_range'] <= userBudget:
+                    listOf3.extend(j)
+                    dictOf3.update({j: t})
+                    num += 1
+        userBudget += 1
+    # //TODO: if not enough that match budget, include all (?)
+    def pricer(b):
+        if b == '1':
+            return '$'
+        elif b == '2':
+            return '$$'
+        elif b == '3':
+            return '$$$'
+        elif b == '4':
+            return '$$$$'
+
+    bigList = []
+
+    for k, v in dictOf3.items():
+        price = pricer(str(v['price_range']))
+        bigList.append(k +': '+ v['location']['address'] + " | " + "User Rating: " + v['user_rating']['aggregate_rating']
+            + " | " + "Price: " + price)
+
+        # shortList.append(v['name'])
+    return render_template('suggest.html', selectDate=selectDate, sugg=bigList)
 
 
-    # return 'done'
 
 
 
-
-    return render_template('suggest.html', selectDate=selectDate, sugg=shortList)
-
-
-
-
-
-# //TODO: add catch (404) if there is no internet connection
+# //TODO: add catch [404] if there is no internet connection
 
 
 # /////////////////////////////////////////////////////////
-
-@app.route('/user')
-def userPage():
-    return render_template('welcome.html')
-food = find_restaurant()
-
-@app.route('/user', methods=['POST', 'GET'])
-def cityQuery():
-    if request.method == 'POST':
-        cityVar = request.form['cityVar']
-
-        food.get_city_ID(cityVar)
-
-        return redirect(url_for('cuisQuery'))
-
-        # return redirect(url_for('cuisQuery'))
-
-@app.route('/user/cuis')
-def wel2():
-    return render_template('welcome2.html', city=food.cityName)
-
-#
-@app.route('/user/cuis', methods=['POST', 'GET'])
-def cuisQuery():
-    cuisVar = request.form['cuisVar']
-
-#
-    food.get_cuisine(cuisVar)
-    food.get_rest_list(food.city_ID, food.cuisine_ID)
-    return food.res_list[0]
-# return redirect(url_for('cuisine_form'))
-
-
-    # cuisVar = request.form['cuisVar']
-    #
-    # food.get_cuisine(cuisVar)
-    # food.get_rest_list(food.city_ID, food.cuisine_ID)
-    # return food.res_list
-
-## TODO: add in restaurant API functionality
 
 
 

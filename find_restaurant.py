@@ -58,33 +58,49 @@ class find_restaurant:
             print("Invalid Cuisine")
 
 
-    # params: (int) city the city_ID
-            # (int[]) list [comma separated] of cuisine IDs
+    # params: (int) city the city_ID,
+            # (int) INPUT ONLY ONE CUISINE TYPE. Can't stratify results if use list of cuis
+                ## {alt} (int[]) list [comma separated] of cuisine IDs
     # return: (void) populates self.res_list - only names, self.res_dict - names -> rest info
     def get_rest_list(self, city, cuis):
-        # global rest_dict
-        try:
+
+        # try:
             r = requests.get(url = self.base + "search", headers = self.headers, params = {"entity_type":"city",
-                        "entity_id" : city, "cuisines":cuis})
+                        "entity_id" : city, "cuisines":cuis, "sort":"rating"})
             data = r.json()
 
             rest_index = data['restaurants']
             self.res_list = []
             self.res_dict = {}
+            num = 0
+
+
             for i in rest_index:
+                # only performs list, dict creation for 3 restaurants
+                # used to stratify results between all cuisine types
+                # if num > 2:
+                    # return self.res_list, self.res_dict
                 name = i['restaurant']['name']
                 count = 1
-                # if name in res_dict.keys():
+
+
+                # TODO: # OPTIMIZE:
+                # accounts for duplicates by making subsequent repeats include locality, then (int) count
                 while name in self.res_dict.keys():
-                    count += 1
-                    name = name + "_{1}".format(count)
+                    name = name + " ({})".format(i['restaurant']['location']['locality'])
+                    if name in self.res_dict.keys():
+                        count += 1
+                        name = name.replace(')', ' ')
+                        name = name + "{})".format(count)
                 # self.res_dict[i['restaurant']['name'] + "_{1}".format(count)] = i['restaurant']
                 self.res_list.append(name)
                 self.res_dict[name] = i['restaurant']
-                # print(i['restaurant']['name'])
+                # num += 1
 
-        except IndexError:
-            print("Invalid Query")
+            return self.res_list, self.res_dict
+
+        # except IndexError:
+        #     print("Invalid Query")
 
     def get_rest_info(self, name):
         return self.res_dict[name.lower()]['url']
