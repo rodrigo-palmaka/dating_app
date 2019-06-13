@@ -5,7 +5,7 @@ import db_handler as handle
 import find_events as ev
 from datetime import datetime
 
-
+#calendar widget: https://yuilibrary.com/yui/docs/calendar/calendar-simple.html
 app = Flask(__name__)
 simpleCuis =  ['Asian', 'American', 'Breakfast', 'Bubble_Tea', 'Cafe',
         'Fast_Food', 'Indian', 'Italian', 'Mediterranean', 'Mexican', 'Pizza']
@@ -14,7 +14,7 @@ simpleCuis =  ['Asian', 'American', 'Breakfast', 'Bubble_Tea', 'Cafe',
 
 @app.route("/")
 def main():
-    return render_template('homepage.html', message='')
+    return render_template('login.html', message='')
 
 
 @app.route('/', methods = ['POST', 'GET'])

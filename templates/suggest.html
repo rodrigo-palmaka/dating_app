@@ -1,4 +1,5 @@
 <!-- Add an additional blue button style -->
+
 <script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
 
 <style>
@@ -92,10 +93,12 @@ YUI().use('calendar', 'datatype-date', 'cssbutton',  function(Y) {
 
   <div>
 
-    <h3> Your Date Recommendations for {{selectDate}}: </h3>
+    <p> Your Date Recommendations for {{selectDate}}: </p>
+
     {% for i in sugg %}
 
         <div class="{{ i }}"><h4> {{i}} </h4></div><br>
 
          {% endfor %}
+
   </div>
