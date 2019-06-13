@@ -21,7 +21,7 @@ def main():
 def sign():
    if request.method == 'POST':
 
-      # try:
+      try:
           ## SIGN-UP
            email = request.form['email1']
            password = request.form['pass1']
@@ -35,19 +35,17 @@ def sign():
            elif not insert:
                return main2(signError="Email already used!")
 
-      # except:
+      except:
            ##LOG-IN
            email = request.form['email2']
            password = request.form['pass2']
 
            id = handle.getID(email)
            if handle.validateLogin(email, password):
-               return redirect(url_for('dash', id=id))
+               return redirect(url_for('dash', id=id[0][0]))
            else:
                return main2(logError="Incorrect email or password!")
 
-           # //TODO: redirect to welcome pg w calendar
-           # return redirect(url_for('cityQuery'))
 
 @app.route('/')
 def main2(signError='', logError=''):
@@ -182,8 +180,10 @@ def sugg(id, selectDate):
             + " | " + "Price: " + price)
 
     city = handle.getCityName(id)
-    ev.getEvent(city, selectDate)
-
+    liss, dicc = ev.getEvent(city, selectDate)
+    for k, v in dicc.items():
+        bigList.append(k + ': ' + v)
+    # return dicc
 
         # shortList.append(v['name'])
     return render_template('suggest.html', selectDate=selectDate, sugg=bigList)

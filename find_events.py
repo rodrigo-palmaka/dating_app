@@ -7,11 +7,31 @@ apiToken = 'QbrjjMLKRc8Dj4tS'
 # params = {}
 
 def getEvent(cityName, date):
+    o = open('test_ev_list.txt', 'w+')
+
+
     datee = datetime.strptime(date, '%b %d, %Y')
     s = datetime.strftime(datee, '%Y%m%d')
-    prms = {'authentication':'QbrjjMLKRc8Dj4tS', 'location': cityName, 'date':s+'00'+'-'+s+'00'}
+    prms = {'app_key':'QbrjjMLKRc8Dj4tS', 'l': cityName, 't':s+'00'+'-'+s+'00', 'c':'music'}
+    # prms = {'app_key':'QbrjjMLKRc8Dj4tS'}
+    # r = requests.get(url = baseUrl + "categories/list",  params = prms)
 
-    r = requests.get(url = baseUrl + "events",  params = prms)
+    r = requests.get(url = baseUrl + "events/search",  params = prms)
     data = r.json()
-    print(data)
+    # print(data['events']['event'][0])
+    a = data['events']['event']
+    # print(a)
+    evList = []
+    evDict = {}
+    for i in a:
+        name = i['title']
+        evList.append(name)
+        evDict[name] = i['url']
+    return evList, evDict
+
+    # for i in data['events']:
+    #     print(i['event'])
+        # o.write(i['event'] +', ')
+    # for i in data['category']:
+        # o.write(str(i['name']).replace('amp;', '') + ', ')
 # if r.status_code == 200:
