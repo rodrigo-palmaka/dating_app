@@ -11,45 +11,57 @@ simpleCuis =  ['Asian', 'American', 'Breakfast', 'Bubble_Tea', 'Cafe',
         'Fast_Food', 'Indian', 'Italian', 'Mediterranean', 'Mexican', 'Pizza']
 
 
-
 @app.route("/")
 def main():
-    return render_template('login.html', message='')
+    return render_template('signup.html', message='')
 
 
 @app.route('/', methods = ['POST', 'GET'])
+# SIGN-UP
 def sign():
-   if request.method == 'POST':
-
-      try:
-          ## SIGN-UP
-           email = request.form['email1']
-           password = request.form['pass1']
-           if not password:
-               return main2(signError="Invalid Password!")
-           # returns false if email taken
-           insert = handle.insertUser(email, password)
-           if insert:
-               id = handle.getID(email)
-               return redirect(url_for('setPrefs', id=id[0][0]))
-           elif not insert:
-               return main2(signError="Email already used!")
-
-      except:
-           ##LOG-IN
-           email = request.form['email2']
-           password = request.form['pass2']
-
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['pass']
+        if not password:
+           return main2(signError="Invalid Password!")
+        # returns false if email taken
+        insert = handle.insertUser(email, password)
+        if insert:
            id = handle.getID(email)
-           if handle.validateLogin(email, password):
-               return redirect(url_for('dash', id=id[0][0]))
-           else:
-               return main2(logError="Incorrect email or password!")
-
+           handle.prefsInit(id)
+           return redirect(url_for('setPrefs', id=id[0][0]))
+        elif not insert:
+           return signErr(signError="Email already used!")
 
 @app.route('/')
-def main2(signError='', logError=''):
-    return render_template('homepage.html', message=signError, message2=logError)
+def signErr(signError=''):
+    return render_template('signup.html', message=signError)
+
+@app.route('/login')
+def logPage():
+    return render_template('login.html', message='')
+
+
+@app.route('/login', methods=['POST', 'GET'])
+def log():
+    if request.method == 'POST':
+        ##LOG-IN
+        email = request.form['email']
+        password = request.form['pass']
+
+        id = handle.getID(email)
+        if handle.validateLogin(email, password):
+            return redirect(url_for('dash', id=id[0][0]))
+        else:
+            return logErr(logError="Incorrect email or password!")
+
+@app.route('/login')
+def logErr(logError=''):
+    return render_template('login.html', message=logError)
+
+
+
+
 
 
 @app.route('/signup/<id>')
@@ -144,7 +156,6 @@ def sugg(id, selectDate):
     listOf3 = []
     dictOf3 = {}
     userBudget = handle.getBudget(id)[0][0]
-    print(userBudget)
 
     while not listOf3:
         for i in cuisList:

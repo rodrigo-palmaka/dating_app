@@ -13,7 +13,6 @@ def insertUser(email, password):
          return True
      conn.close()
 
-
 # inserts preference variable into desired column of preferences table
 
 def toPref(var, column, user_id):
@@ -21,6 +20,16 @@ def toPref(var, column, user_id):
     cur = conn.cursor()
     cur.execute("UPDATE preferences SET "+column+" = ? WHERE id = ?", (var, user_id,))
     # cur.execute("UPDATE preferences SET age = 9 WHERE id = ?", (user_id,))
+    conn.commit()
+    conn.close()
+
+def prefsInit(id):
+    conn = sqlite3.connect('signup.db')
+    cur = conn.cursor()
+    cur.execute("""UPDATE preferences SET sex = 0, age=1, city_id=306, city_name=San Francisco,
+                   budget=2, active=0, Asian=0, American=1, Breakfast=0, Bubble_Tea=0,
+                   Cafe=0, Fast_Food=0, Indian=0, Italian=0, Mediterranean=0, Mexican=1, Pizza=1
+                   WHERE id = ?""", (user_id,))
     conn.commit()
     conn.close()
 

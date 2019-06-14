@@ -7,31 +7,32 @@
 
   </head>
 
-  <body align="center">
-
-    <h1> Welcome! </h1>
-
-    <form class="form-login" method="POST">
-
-      <!-- UNCOMMENT WHEN DONE TESTING -->
-      <!-- Email: <input type="email" name="email2"><br> -->
-      Email: <input type="text" name="email2"><br>
-      Password: <input type="text" name="pass2"><br>
-      <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me or Don't
-          </label>
-        </div>
-
-      <button class="btn btn-lg btn-secondary btn-block" type="submit">Log in</button>
-
-    </form>
-    <br>
-    <div>
-      <p text="align-center">
-          {{message2}}
-      </p>
+  <body>
+    <div class='welcome'>
+      <h1> Nite Out </h1>
     </div>
+    <div class='login'>
+      <h1> Welcome Back! </h1>
+
+      <form class="form-login" method="POST">
+
+        <!-- UNCOMMENT WHEN DONE TESTING -->
+        <!-- Email: <input type="email" name="email2"><br> -->
+        <input type="text" name="email" placeholder="Email"><br>
+        <input type="text" name="pass" placeholder="Password">
+          <p text="align-center">
+              {{message}}
+          </p>
+
+
+        <button class="btn btn-primary btn-block btn-large" type="submit">Log in</button>
+
+      </form>
+    </div>
+    <div id="copy">
+      <p>&copy; 2019 Rodrigo Palmaka<p>
+    </div>
+
 
 </body>
 

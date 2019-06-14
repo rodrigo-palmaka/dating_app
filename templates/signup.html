@@ -6,28 +6,35 @@
 
   </head>
 
-    <body>
-      <h1> Welcome! </h1>
 
-      <form class="form-signup" method="POST">
-        <!-- UNCOMMENT WHEN DONE TESTING -->
-        <!-- Email: <input type="email" name="email1"><br> -->
-        Email: <input type="text" name="email1"><br>
-        Password: <input type="text" name="pass1"><br>
-        <div class="checkbox mb-3">
-
-          </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-
-
-      </form>
-      <br>
-      <div>
-        <p text="align-center">
-            {{message}}
-        </p>
+  <body>
+      <div class='welcome'>
+        <h1> Nite Out </h1>
       </div>
-    </body>
+
+      <div class='login'>
+        <h1> Sign Up </h1>
+
+          <form class="form-signup" method="POST">
+            <!-- UNCOMMENT WHEN DONE TESTING -->
+            <!-- Email: <input type="email" name="email1"><br> -->
+            <input type="text" name="email" placeholder="Email"><br>
+            <input type="text" name="pass" placeholder="Password">
+              <p>
+                  {{message}}
+              </p>
+            <button class="btn btn-primary btn-block btn-large" type="submit">Sign Up</button>
+          </form>
+            <a href="{{ url_for('log') }}"> already have an account?  </a>
+          <br>
+
+
+
+      </div>
+      <div id="copy">
+        <p>&copy; 2019 Rodrigo Palmaka<p>
+      </div>
+  </body>
 
 
 

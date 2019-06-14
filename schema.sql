@@ -1,24 +1,24 @@
--- drop table if exists user;
---     create table user (
---     id integer primary key autoincrement,
---     email text not null,
---     password text not null
--- );
---
---
---
--- drop table if exists preferences;
--- create table preferences (
---   id integer primary key autoincrement,
---   user_email text not null,
---   sex INT(2),
---   age INT,
---   city_id INT,
---   city_name TEXT,
---   budget INT(3),
---   active INT(2),
---   Asian TINYINT(1), American TINYINT(1), Breakfast TINYINT(1), Bubble_Tea TINYINT(1), Cafe TINYINT(1),
---   Fast_Food TINYINT(1), Indian TINYINT(1), Italian TINYINT(1), Mediterranean TINYINT(1), Mexican TINYINT(1), Pizza TINYINT(1));
+drop table if exists user;
+    create table user (
+    id integer primary key autoincrement,
+    email text not null,
+    password text not null
+);
+
+
+
+drop table if exists preferences;
+create table preferences (
+  id integer primary key autoincrement,
+  user_email text not null,
+  sex INT(2),
+  age INT,
+  city_id INT,
+  city_name TEXT,
+  budget INT(3),
+  active INT(2),
+  Asian TINYINT(1), American TINYINT(1), Breakfast TINYINT(1), Bubble_Tea TINYINT(1), Cafe TINYINT(1),
+  Fast_Food TINYINT(1), Indian TINYINT(1), Italian TINYINT(1), Mediterranean TINYINT(1), Mexican TINYINT(1), Pizza TINYINT(1));
 --
 -- --
 -- -- --   -- Afghan TINYINT(1), African TINYINT(1), American TINYINT(1), Argentine TINYINT(1), Armenian TINYINT(1), Asian TINYINT(1), BBQ TINYINT(1), Bagels TINYINT(1), Bakery TINYINT(1), Bar_Food TINYINT(1), Belgian TINYINT(1), Beverages TINYINT(1), Brazilian TINYINT(1), Breakfast TINYINT(1), British TINYINT(1), Bubble_Tea TINYINT(1), Burger TINYINT(1),
