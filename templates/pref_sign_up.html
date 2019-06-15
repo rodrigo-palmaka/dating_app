@@ -1,72 +1,131 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>NiteOut</title>
+    <link rel="stylesheet" href="/static/prefs2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 
   <body>
 
 
-    <h2>
-      Personal Information:
-      </h2>
-      <br>
-      <form method="POST">
+    <div class='nav-contain'>
+      <div id="navbar">
+        <!-- <p> NiteOut </p>
+        <p> Home </p> -->
+        <!-- <a href="{{ url_for('sign') }}"> Home </a> -->
+
+          <h5> NiteOut </h5>
+
+        </div>
+    </div>
+<!--
+    <header class="main_h">
+
+        <div class="row">
+            <a class="logo" href="#">P/F</a>
+
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href=".sec01">Section 01</a></li>
+                    <li><a href=".sec02">Section 02</a></li>
+                    <li><a href=".sec03">Section 03</a></li>
+                    <li><a href=".sec04">Section 04</a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </header> -->
 
 
+        <div class='content-container'>
+          <div class='content'>
 
-          Age: <input type="number" name="age"><br>
-          Location (City): <input type="text" name="location"><br>
-          {{city}}<br>
-
-          Sex:
-              <select name="sex">
-              <option value=0> Male </option>
-              <option value=1> Female </option>
-            <option value=2> Other </option>
-            </select>
-            <br><br>
+              <h2>
+                Personal Information:
+              </h2>
 
 
+            <form class='form' method="POST">
+                Age: <input type="number" name="age"><br>
+                Location (City): <input type="text" name="location"><br>
+                {{city}}<br>
+
+                Sex:
+                    <select name="sex">
+                    <option value=0> Male </option>
+                    <option value=1> Female </option>
+                  <option value=2> Other </option>
+                  </select>
 
 
-    <h2> Set Your Date Preferences </h2>
+              <h2> Set Your Date Preferences </h2>
+              <h3> Budget: </h3><br>
+              <div clas='inputGroup'>
+                <input id='radio1' type="radio" name="budget" value ="1" checked>
+                <label for="radio1">$</label>
+              </div>
+
+              <div clas='inputGroup'>
+                <input id='radio2' type="radio" name="budget" value ="2">
+                <label for="radio2">$$</label>
+              </div>
+
+                <input type="radio" name="budget" value ="3">$$$<br>
+                <input type="radio" name="budget" value ="4">$$$$<br>
+              </div>
+
+  <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+              <!-- add hiker emoticons -->
+                <p> Activeness: </p><br>
+                <input type="radio" name="active" value="0" checked> Light <br>
+                <input type="radio" name="active" value="1"> Moderate <br>
+                <input type="radio" name="active" value="2"> Athletic <br>
 
 
+                <p>Favorite Cuisines: </p>
+                <!-- "<input type="checkbox" name="+i+" value="+get_cuisine(i)+"> Italian <br>" -->
+                <input type='checkbox' name='cuis' value="Asian">Asian
+                <input type='checkbox' name='cuis' value="American">American<br>
+                <input type='checkbox' name='cuis' value="Breakfast">Breakfast
+                <input type='checkbox' name='cuis' value="Bubble_Tea">Bubble Tea<br>
+                <input type='checkbox' name='cuis' value="Cafe">Cafe
+                <input type='checkbox' name='cuis' value="Fast_Food">Fast Food<br>
+                <input type='checkbox' name='cuis' value="Indian">Indian
+                <input type='checkbox' name='cuis' value="Italian">Italian<br>
+                <input type='checkbox' name='cuis' value="Mediterranean">Mediterranean
+                <input type='checkbox' name='cuis' value="Mexican">Mexican<br>
+                <input type='checkbox' name='cuis' value="Pizza">Pizza
+                <br><br>
+                <input type="submit">
 
-        <p> Budget: </p><br>
-        <input type="radio" name="budget" value ="1" checked>$<br>
-        <input type="radio" name="budget" value ="2">$$<br>
-        <input type="radio" name="budget" value ="3">$$$<br>
-        <input type="radio" name="budget" value ="4">$$$$<br>
+              </form>
+            </div>
+        </div>
 
+        <script>
+        window.onscroll = function() {myFunction()};
 
-        <!-- add hiker emoticons -->
-        <p> Activeness: </p><br>
-        <input type="radio" name="active" value="0" checked> Light <br>
-        <input type="radio" name="active" value="1"> Moderate <br>
-        <input type="radio" name="active" value="2"> Athletic <br>
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
 
-        <p>Favorite Cuisines: </p>
-        <!-- "<input type="checkbox" name="+i+" value="+get_cuisine(i)+"> Italian <br>" -->
-        <input type='checkbox' name='cuis' value="Asian">Asian
-        <input type='checkbox' name='cuis' value="American">American<br>
-        <input type='checkbox' name='cuis' value="Breakfast">Breakfast
-        <input type='checkbox' name='cuis' value="Bubble_Tea">Bubble Tea<br>
-        <input type='checkbox' name='cuis' value="Cafe">Cafe
-        <input type='checkbox' name='cuis' value="Fast_Food">Fast Food<br>
-        <input type='checkbox' name='cuis' value="Indian">Indian
-        <input type='checkbox' name='cuis' value="Italian">Italian<br>
-        <input type='checkbox' name='cuis' value="Mediterranean">Mediterranean
-        <input type='checkbox' name='cuis' value="Mexican">Mexican<br>
-        <input type='checkbox' name='cuis' value="Pizza">Pizza
-        <br><br>
-        <input type="submit">
-
-        </form>
-
-
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
+        }
+        </script>
 
     </body>
-
-
 
 </html>

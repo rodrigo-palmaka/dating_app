@@ -27,9 +27,10 @@ def sign():
         # returns false if email taken
         insert = handle.insertUser(email, password)
         if insert:
-           id = handle.getID(email)
+           raw_id = handle.getID(email)
+           id = raw_id[0][0]
            handle.prefsInit(id)
-           return redirect(url_for('setPrefs', id=id[0][0]))
+           return redirect(url_for('setPrefs', id=id))
         elif not insert:
            return signErr(signError="Email already used!")
 
@@ -49,18 +50,16 @@ def log():
         email = request.form['email']
         password = request.form['pass']
 
-        id = handle.getID(email)
+        raw_id = handle.getID(email)
+        id = raw_id[0][0]
         if handle.validateLogin(email, password):
-            return redirect(url_for('dash', id=id[0][0]))
+            return redirect(url_for('dash', id=id))
         else:
             return logErr(logError="Incorrect email or password!")
 
 @app.route('/login')
 def logErr(logError=''):
     return render_template('login.html', message=logError)
-
-
-
 
 
 
@@ -114,9 +113,10 @@ def setPrefs(id):
     # Budget
     budget = request.form["budget"]
     handle.toPref(budget, "budget", id)
-
-
-    return redirect(url_for('dash', id=id))
+    print(id)
+    print(request.args.get('id'))
+    return request.args.get('id')
+    # return redirect(url_for('dash', id=id))
 
 
 @app.route('/dashboard/<id>')
@@ -132,6 +132,15 @@ def dash(id):
         s = datetime.strftime(objDate,'%b %d, %Y')
 
         return redirect(url_for('sugg', id=id, selectDate=s))
+    else:
+        return 'pfffft'
+# @app.route('/dashboard/<id>', methods=["GET", "POST"])
+# def dashHelp():
+#
+#     return request.args['id']
+
+
+
 
 # @app.route('/dashboard/<id>/<selectDate>')
 # def suggestPage(id, selectDate):
