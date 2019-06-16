@@ -15,8 +15,8 @@
         <!-- <p> NiteOut </p>
         <p> Home </p> -->
         <!-- <a href="{{ url_for('sign') }}"> Home </a> -->
-
-          <h5> NiteOut </h5>
+          <a class='left' href="{{ url_for('sign') }}"> Home </a>
+          <a class='right' href="{{ url_for('log') }}"> Sign Out </a>
 
         </div>
     </div>
@@ -46,8 +46,8 @@
     </header> -->
 
 
-        <div class='content-container'>
-          <div class='content'>
+        <!-- <div class='content-container'>
+          <div class='content'> -->
 
               <h2>
                 Personal Information:
@@ -56,8 +56,11 @@
 
             <form class='form' method="POST">
                 Age: <input type="number" name="age"><br>
-                Location (City): <input type="text" name="location"><br>
+                <div class='typed'>
+                  <label for='loc'>Location (City): </label>
+                  <input id='loc' type="text" name="location"><br>
                 {{city}}<br>
+              </div>
 
                 Sex:
                     <select name="sex">
@@ -68,34 +71,106 @@
 
 
               <h2> Set Your Date Preferences </h2>
-              <h3> Budget: </h3><br>
-              <div clas='inputGroup'>
+              <h3> Budget: </h3>
+              <div class='inputGroup'>
                 <input id='radio1' type="radio" name="budget" value ="1" checked>
                 <label for="radio1">$</label>
               </div>
 
-              <div clas='inputGroup'>
+              <div class='inputGroup'>
                 <input id='radio2' type="radio" name="budget" value ="2">
                 <label for="radio2">$$</label>
               </div>
 
-                <input type="radio" name="budget" value ="3">$$$<br>
-                <input type="radio" name="budget" value ="4">$$$$<br>
+              <div class='inputGroup'>
+                <input id='radio3' type="radio" name="budget" value ="3">
+                <label for="radio3">$$$</label>
               </div>
+
+              <div class='inputGroup'>
+                <input id='radio4' type="radio" name="budget" value ="4">
+                <label for="radio4">$$$$</label>
+              </div>
+
+
+              </div>
+                <!-- <input type="radio" name="budget" value ="3">$$$<br>
+                <input type="radio" name="budget" value ="4">$$$$<br> -->
+
 
   <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
               <!-- add hiker emoticons -->
-                <p> Activeness: </p><br>
-                <input type="radio" name="active" value="0" checked> Light <br>
+                <p> Activeness: </p>
+
+                <div class='inputGroup'>
+                  <input id='radio11' type="radio" name="active" value ="0" checked>
+                  <label for="radio11">&#127939;</label>
+                </div>
+                <div class='inputGroup'>
+                  <input id='radio12' type="radio" name="active" value ="1">
+                  <label for="radio12">&#127939;&#127939;</label>
+                </div>
+                <div class='inputGroup'>
+                  <input id='radio13' type="radio" name="active" value ="1">
+                  <label for="radio13">&#127939;&#127939;&#127939;</label>
+                </div>
+
+                <!-- <input type="radio" name="active" value="0" checked> Light <br>
                 <input type="radio" name="active" value="1"> Moderate <br>
-                <input type="radio" name="active" value="2"> Athletic <br>
+                <input type="radio" name="active" value="2"> Athletic <br> -->
 
 
                 <p>Favorite Cuisines: </p>
                 <!-- "<input type="checkbox" name="+i+" value="+get_cuisine(i)+"> Italian <br>" -->
-                <input type='checkbox' name='cuis' value="Asian">Asian
-                <input type='checkbox' name='cuis' value="American">American<br>
-                <input type='checkbox' name='cuis' value="Breakfast">Breakfast
+                <div class='inputGroup'>
+                  <input id='op1' type='checkbox' name='cuis' value="Asian">
+                  <label for='op1'>Asian</label>
+                </div>
+                <div class='inputGroup'>
+                  <input id='op2' type='checkbox' name='cuis' value="American">
+                  <label for='op2'>American</label>
+                </div>
+
+                <div class='inputGroup'>
+                  <input id='op3' type='checkbox' name='cuis' value="Breakfast">
+                  <label for='op3'>Breakfast</label>
+                </div>
+                <div class='inputGroup'>
+                  <input id='op4' type='checkbox' name='cuis' value="Bubble_Tea">
+                  <label for='op4'>Bubble Tea</label>
+                </div>
+                <div class='inputGroup'>
+                  <input id='op5' type='checkbox' name='cuis' value="Cafe">
+                  <label for='op5'>Cafe</label>
+                </div>
+                <div class='inputGroup'>
+                  <input id='op6' type='checkbox' name='cuis' value="Fast_Food">
+                  <label for='op6'>Fast Food</label>
+                </div>
+                <div class='inputGroup'>
+                  <input id='op7' type='checkbox' name='cuis' value="Indian">
+                  <label for='op7'>Indian</label>
+                </div>
+                <div class='inputGroup'>
+                  <input id='op8' type='checkbox' name='cuis' value="Italian">
+                  <label for='op8'>Italian</label>
+                </div>
+                <div class='inputGroup'>
+                  <input id='op9' type='checkbox' name='cuis' value="Mediterranean">
+                  <label for='op9'>Mediterranean</label>
+                </div>
+                <div class='inputGroup'>
+                  <input id='op10' type='checkbox' name='cuis' value="Mexican">
+                  <label for='op10'>Mexican</label>
+                </div>
+                <div class='inputGroup'>
+                  <input id='op11' type='checkbox' name='cuis' value="Pizza">
+                  <label for='op11'>Pizza</label>
+                </div>
+
+
+
+                <!-- <input type='checkbox' name='cuis' value="Breakfast">Breakfast
                 <input type='checkbox' name='cuis' value="Bubble_Tea">Bubble Tea<br>
                 <input type='checkbox' name='cuis' value="Cafe">Cafe
                 <input type='checkbox' name='cuis' value="Fast_Food">Fast Food<br>
@@ -103,13 +178,13 @@
                 <input type='checkbox' name='cuis' value="Italian">Italian<br>
                 <input type='checkbox' name='cuis' value="Mediterranean">Mediterranean
                 <input type='checkbox' name='cuis' value="Mexican">Mexican<br>
-                <input type='checkbox' name='cuis' value="Pizza">Pizza
+                <input type='checkbox' name='cuis' value="Pizza">Pizza -->
                 <br><br>
                 <input type="submit">
 
               </form>
-            </div>
-        </div>
+            <!-- </div>
+        </div> -->
 
         <script>
         window.onscroll = function() {myFunction()};

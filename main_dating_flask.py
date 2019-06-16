@@ -23,7 +23,7 @@ def sign():
         email = request.form['email']
         password = request.form['pass']
         if not password:
-           return main2(signError="Invalid Password!")
+           return signErr(signError="Invalid Password!")
         # returns false if email taken
         insert = handle.insertUser(email, password)
         if insert:
@@ -113,10 +113,8 @@ def setPrefs(id):
     # Budget
     budget = request.form["budget"]
     handle.toPref(budget, "budget", id)
-    print(id)
-    print(request.args.get('id'))
-    return request.args.get('id')
-    # return redirect(url_for('dash', id=id))
+
+    return redirect(url_for('dash', id=id))
 
 
 @app.route('/dashboard/<id>')
