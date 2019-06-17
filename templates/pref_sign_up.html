@@ -16,7 +16,9 @@
         <p> Home </p> -->
         <!-- <a href="{{ url_for('sign') }}"> Home </a> -->
           <a class='left' href="{{ url_for('sign') }}"> Home </a>
+          <a class='center' href="{{ url_for('log') }}"> NiteOut </a>
           <a class='right' href="{{ url_for('log') }}"> Sign Out </a>
+
 
         </div>
     </div>
@@ -55,11 +57,17 @@
 
 
             <form class='form' method="POST">
-                Age: <input type="number" name="age"><br>
+                <div class='inputGroup age'>
+                  <input id='ag' type="number" name="age">
+                  <label for='ag'> Age: </label>
+                </div>
                 <div class='typed'>
                   <label for='loc'>Location (City): </label>
-                  <input id='loc' type="text" name="location"><br>
-                {{city}}<br>
+                  <input id='loc' type="text" name="location">
+                  <div class='error'>
+                    <h1>{{city}}</h1>
+                  </div>
+                <br>
               </div>
 
                 Sex:

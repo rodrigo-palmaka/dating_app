@@ -22,6 +22,8 @@ def sign():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['pass']
+        if not email:
+            return signErr(signError="Invalid Email!")
         if not password:
            return signErr(signError="Invalid Password!")
         # returns false if email taken
@@ -50,9 +52,10 @@ def log():
         email = request.form['email']
         password = request.form['pass']
 
-        raw_id = handle.getID(email)
-        id = raw_id[0][0]
+
         if handle.validateLogin(email, password):
+            raw_id = handle.getID(email)
+            id = raw_id[0][0]
             return redirect(url_for('dash', id=id))
         else:
             return logErr(logError="Incorrect email or password!")
