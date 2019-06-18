@@ -2,10 +2,16 @@
 
 .calen {
   position: absolute;
-  top: 50%;
+  top:30%;
   left: 50%;
-  margin-right: -50%;
+  /* margin: 50%; */
   transform: translate(-50%, -50%)
   /* margin: auto; */
   /* right:200px; */
+}
+
+.calen.box {
+  /* position: relative; */
+  top: 70%;
+
 }
