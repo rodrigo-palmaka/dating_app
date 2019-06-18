@@ -90,9 +90,9 @@ def setPrefs(id):
             handle.toPref(age, "age", id)
 
         else:
-            return render_template('pref_sign_up.html', city="Invalid Age Input")
+            return render_template('pref_sign_up.html', age="Invalid Age Input")
     except:
-        return render_template('pref_sign_up.html', city="Invalid Age Input")
+        return render_template('pref_sign_up.html',  age="Invalid Age Input")
 
     # Sex
     sex = request.form['sex']
