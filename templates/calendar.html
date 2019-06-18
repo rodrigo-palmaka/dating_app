@@ -16,14 +16,7 @@
      <!-- Container for the calendar -->
      <div id="mycalendar"></div>
   </div>
-  <div id="rightcolumn" class="yui3-u">
-   <div id="links" style="padding-left:20px;">
-      <!-- The buttons are created simply by assigning the correct CSS class -->
-      <!-- <button id="togglePrevMonth" class="yui3-button">Toggle Previous Month's Dates</button><br>
-      <button id="toggleNextMonth" class="yui3-button">Toggle Next Month's Dates</button><br> -->
-      Selected date: <span id="selecteddate"></span>
-   </div>
-  </div>
+
 </div>
 
 <script type="text/javascript">
@@ -83,7 +76,9 @@ YUI().use('calendar', 'datatype-date', 'cssbutton',  function(Y) {
 
 <div><br>
   <form method="POST">
-<input type="text" id="selectDate" name="selectDate"></input>
+    <label for="selectDate"> Selected Date: </label>
+    <input type="text" id="selectDate" name="selectDate"></input>
+
   <input type="submit" name="Search"></input>
   </form>
 
