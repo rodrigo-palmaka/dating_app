@@ -1,85 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NiteOut</title>
+    <link rel="stylesheet" href="/static/prefs2.css">
+    <link rel="stylesheet" href="/static/cal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 <!-- Add an additional blue button style -->
-<script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
+  <script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
 
-<style>
-.yui3-button {
-    margin:10px 0px 10px 0px;
-    color: #fff;
-    background-color: #3476b7;
-}
-</style>
+  <style>
+  .yui3-button {
+      margin:10px 0px 10px 0px;
+      color: #fff;
+      background-color: #3476b7;
+  }
+  </style>
 
+  <div class='nav-contain'>
+    <div id="navbar">
+      <!-- <p> NiteOut </p>
+      <p> Home </p> -->
+      <!-- <a href="{{ url_for('sign') }}"> Home </a> -->
+        <a href="{{ url_for('sign') }}"> Home </a>
+        <a href="{{ url_for('log') }}"> NiteOut </a>
+        <a href="{{ url_for('log') }}"> Sign Out </a>
 
-<div id="demo" class="yui3-skin-sam yui3-g"> <!-- You need this skin class -->
-
-  <div id="leftcolumn" class="yui3-u">
-     <!-- Container for the calendar -->
-     <div id="mycalendar"></div>
+      </div>
   </div>
 
-</div>
+  <body>
+  <div id="demo" class="yui3-skin-sam yui3-g"> <!-- You need this skin class -->
 
-<script type="text/javascript">
-YUI().use('calendar', 'datatype-date', 'cssbutton',  function(Y) {
-
-    // Create a new instance of calendar, placing it in
-    // #mycalendar container, setting its width to 340px,
-    // the flags for showing previous and next month's
-    // dates in available empty cells to true, and setting
-    // the date to today's date.
-    var calendar = new Y.Calendar({
-      contentBox: "#mycalendar",
-      width:'340px',
-      showPrevMonth: true,
-      showNextMonth: true,
-      date: new Date()}).render();
-
-    // Get a reference to Y.DataType.Date
-    var dtdate = Y.DataType.Date;
-
-    // Listen to calendar's selectionChange event.
-    calendar.on("selectionChange", function (ev) {
-
-      // Get the date from the list of selected
-      // dates returned with the event (since only
-      // single selection is enabled by default,
-      // we expect there to be only one date)
-      var newDate = ev.newSelection[0];
-
-      document.getElementById("selectDate").value = dtdate.format(newDate);
-
-      // Format the date and output it to a DOM
-      // element.
-      Y.one("#selecteddate").setHTML(dtdate.format(newDate));
-
-    });
-
-
-    // // When the 'Show Previous Month' link is clicked,
-    // // modify the showPrevMonth property to show or hide
-    // // previous month's dates
-    // Y.one("#togglePrevMonth").on('click', function (ev) {
-    //   ev.preventDefault();
-    //   calendar.set('showPrevMonth', !(calendar.get("showPrevMonth")));
-    // });
-
-    // // When the 'Show Next Month' link is clicked,
-    // // modify the showNextMonth property to show or hide
-    // // next month's dates
-    // Y.one("#toggleNextMonth").on('click', function (ev) {
-    //   ev.preventDefault();
-    //   calendar.set('showNextMonth', !(calendar.get("showNextMonth")));
-    // });
-});
-</script>
-
-
-<div><br>
-  <form method="POST">
-    <label for="selectDate"> Selected Date: </label>
-    <input type="text" id="selectDate" name="selectDate"></input>
-
-  <input type="submit" name="Search"></input>
-  </form>
+    <div id="leftcolumn" class="yui3-u">
+       <!-- Container for the calendar -->
+       <div class='calen'>
+        <div id="mycalendar" class='calen'></div>
+       </div>
+    </div>
 
   </div>
+
+  <script type="text/javascript">
+  YUI().use('calendar', 'datatype-date', 'cssbutton',  function(Y) {
+
+      // Create a new instance of calendar, placing it in
+      // #mycalendar container, setting its width to 340px,
+      // the flags for showing previous and next month's
+      // dates in available empty cells to true, and setting
+      // the date to today's date.
+      var calendar = new Y.Calendar({
+        contentBox: "#mycalendar",
+        width:'340px',
+        showPrevMonth: true,
+        showNextMonth: true,
+        date: new Date()}).render();
+
+      // Get a reference to Y.DataType.Date
+      var dtdate = Y.DataType.Date;
+
+      // Listen to calendar's selectionChange event.
+      calendar.on("selectionChange", function (ev) {
+
+        // Get the date from the list of selected
+        // dates returned with the event (since only
+        // single selection is enabled by default,
+        // we expect there to be only one date)
+        var newDate = ev.newSelection[0];
+
+        document.getElementById("selectDate").value = dtdate.format(newDate);
+
+        // Format the date and output it to a DOM
+        // element.
+        Y.one("#selecteddate").setHTML(dtdate.format(newDate));
+
+      });
+
+
+      // // When the 'Show Previous Month' link is clicked,
+      // // modify the showPrevMonth property to show or hide
+      // // previous month's dates
+      // Y.one("#togglePrevMonth").on('click', function (ev) {
+      //   ev.preventDefault();
+      //   calendar.set('showPrevMonth', !(calendar.get("showPrevMonth")));
+      // });
+
+      // // When the 'Show Next Month' link is clicked,
+      // // modify the showNextMonth property to show or hide
+      // // next month's dates
+      // Y.one("#toggleNextMonth").on('click', function (ev) {
+      //   ev.preventDefault();
+      //   calendar.set('showNextMonth', !(calendar.get("showNextMonth")));
+      // });
+  });
+  </script>
+
+
+  <div><br>
+    <form method="POST">
+      <label for="selectDate"> Selected Date: </label>
+      <input type="text" id="selectDate" name="selectDate"></input>
+
+    <input type="submit" name="Search"></input>
+    </form>
+
+    </div>
+</body>
+
+</html>
