@@ -196,9 +196,9 @@ def sugg(id, selectDate):
     bigList = []
 
     for k, v in dictOf3.items():
+        print(v)
         price = pricer(str(v['price_range']))
-        bigList.append(k +': '+ v['location']['address'] + " | " + "User Rating: " + v['user_rating']['aggregate_rating']
-            + " | " + "Price: " + price)
+        bigList.append(k +': '+ v['location']['address'] + " | " + "User Rating: " + str(v['user_rating']['aggregate_rating']) + " | Price: " + price)
 
     city = handle.getCityName(id)
     liss, dicc = ev.getEvent(city, selectDate)

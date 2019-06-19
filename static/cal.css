@@ -76,16 +76,22 @@ border: 1px solid #3762bc; text-shadow: 1px 1px 1px rgba(0,0,0,0.4); box-shadow:
 
 .list {
 /*
-
-
   right: 50%; */
   position: absolute;
-  top: 70%;
+  top: 65%;
+  text-align: center;
+}
 
+.list p {
+  font-size: 28px;
+  color: #3c454c;
+
+  text-shadow:1px 1px #b8c6db;
 }
 
 .suggBox {
   width: 50%;
+  right: 50%;
   margin: 0 auto;
   background-color: #fff;
   color: black;
