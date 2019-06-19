@@ -6,107 +6,112 @@
     <link rel="stylesheet" href="/static/cal.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-<script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
+<!-- Add an additional blue button style -->
+  <script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
 
-<style>
-.yui3-button {
-    margin:10px 0px 10px 0px;
-    color: #fff;
-    background-color: #3476b7;
-}
-</style>
+  <style>
+  .yui3-button {
+      margin:10px 0px 10px 0px;
+      color: #fff;
+      background-color: #3476b7;
+  }
+  </style>
 
+  <div class='nav-contain'>
+    <div id="navbar">
+      <!-- <p> NiteOut </p>
+      <p> Home </p> -->
+      <!-- <a href="{{ url_for('sign') }}"> Home </a> -->
+        <a href="{{ url_for('sign') }}"> Home </a>
+        <a href="{{ url_for('log') }}"> NiteOut </a>
+        <a href="{{ url_for('log') }}"> Sign Out </a>
 
-<div id="demo" class="yui3-skin-sam yui3-g"> <!-- You need this skin class -->
-
-  <div id="leftcolumn" class="yui3-u">
-     <!-- Container for the calendar -->
-     <div id="mycalendar"></div>
+      </div>
   </div>
-  <div id="rightcolumn" class="yui3-u">
-   <div id="links" style="padding-left:20px;">
-      <!-- The buttons are created simply by assigning the correct CSS class -->
-      <button id="togglePrevMonth" class="yui3-button">Toggle Previous Month's Dates</button><br>
-      <button id="toggleNextMonth" class="yui3-button">Toggle Next Month's Dates</button><br>
-      Selected date: <span id="selecteddate"></span>
-   </div>
-  </div>
-</div>
 
-<script type="text/javascript">
-YUI().use('calendar', 'datatype-date', 'cssbutton',  function(Y) {
+  <body>
+  <div id="demo" class="yui3-skin-sam yui3-g"> <!-- You need this skin class -->
 
-    // Create a new instance of calendar, placing it in
-    // #mycalendar container, setting its width to 340px,
-    // the flags for showing previous and next month's
-    // dates in available empty cells to true, and setting
-    // the date to today's date.
-    var calendar = new Y.Calendar({
-      contentBox: "#mycalendar",
-      width:'340px',
-      showPrevMonth: true,
-      showNextMonth: true,
-      date: new Date()}).render();
-
-    // Get a reference to Y.DataType.Date
-    var dtdate = Y.DataType.Date;
-
-    // Listen to calendar's selectionChange event.
-    calendar.on("selectionChange", function (ev) {
-
-      // Get the date from the list of selected
-      // dates returned with the event (since only
-      // single selection is enabled by default,
-      // we expect there to be only one date)
-      var newDate = ev.newSelection[0];
-
-      document.getElementById("someInput").value = dtdate.format(newDate);
-
-      // Format the date and output it to a DOM
-      // element.
-      Y.one("#selecteddate").setHTML(dtdate.format(newDate));
-
-    });
-
-
-    // When the 'Show Previous Month' link is clicked,
-    // modify the showPrevMonth property to show or hide
-    // previous month's dates
-    Y.one("#togglePrevMonth").on('click', function (ev) {
-      ev.preventDefault();
-      calendar.set('showPrevMonth', !(calendar.get("showPrevMonth")));
-    });
-
-    // When the 'Show Next Month' link is clicked,
-    // modify the showNextMonth property to show or hide
-    // next month's dates
-    Y.one("#toggleNextMonth").on('click', function (ev) {
-      ev.preventDefault();
-      calendar.set('showNextMonth', !(calendar.get("showNextMonth")));
-    });
-});
-</script>
-
-
-<div><br>
-  <form method="POST">
-<input type="text" id="selectDate" name="selectDate"></input>
-  <input type="submit" name="Search">
-  </form>
-<br>
+    <div id="leftcolumn" class="yui3-u">
+       <!-- Container for the calendar -->
+       <div class='calen'>
+        <div id="mycalendar"></div>
+       </div>
+    </div>
 
   </div>
 
-  <div>
+  <script type="text/javascript">
+  YUI().use('calendar', 'datatype-date', 'cssbutton',  function(Y) {
+      // Create a new instance of calendar, placing it in
+      // #mycalendar container, setting its width to 340px,
+      // the flags for showing previous and next month's
+      // dates in available empty cells to true, and setting
+      // the date to today's date.
+      var calendar = new Y.Calendar({
+        contentBox: "#mycalendar",
+        width:'440px',
+        // height: '300px',
+        showPrevMonth: true,
+        showNextMonth: true,
+        date: new Date()}).render();
+      // Get a reference to Y.DataType.Date
+      var dtdate = Y.DataType.Date;
+      // Listen to calendar's selectionChange event.
+      calendar.on("selectionChange", function (ev) {
+        // Get the date from the list of selected
+        // dates returned with the event (since only
+        // single selection is enabled by default,
+        // we expect there to be only one date)
+        var newDate = ev.newSelection[0];
+        document.getElementById("selectDate").value = dtdate.format(newDate);
+        // Format the date and output it to a DOM
+        // element.
+        Y.one("#selecteddate").setHTML(dtdate.format(newDate));
+      });
+      // // When the 'Show Previous Month' link is clicked,
+      // // modify the showPrevMonth property to show or hide
+      // // previous month's dates
+      // Y.one("#togglePrevMonth").on('click', function (ev) {
+      //   ev.preventDefault();
+      //   calendar.set('showPrevMonth', !(calendar.get("showPrevMonth")));
+      // });
+      // // When the 'Show Next Month' link is clicked,
+      // // modify the showNextMonth property to show or hide
+      // // next month's dates
+      // Y.one("#toggleNextMonth").on('click', function (ev) {
+      //   ev.preventDefault();
+      //   calendar.set('showNextMonth', !(calendar.get("showNextMonth")));
+      // });
+  });
+  </script>
 
-    <p> Your Date Recommendations for {{selectDate}}: </p>
 
-    {% for i in sugg %}
+  <div class='calen box'>
+    <form method="POST">
+      <div class='bbb'>
+        <!-- <label for="selectDate"> Selected Date: </label> -->
+          <input type="text" id="selectDate" name="selectDate"></input>
+          <button class='btn btn-primary btn-block btn-large submit' type="submit">
+          Search
+          </button>
+      </div>
 
-        <div class="{{ i }}"><h4> {{i}} </h4></div><br>
+    <!-- <input type="submit" name="Search"></input> -->
+    </form>
+    </div>
 
-         {% endfor %}
+    <div class="">
 
-  </div>
+      <p> Your Date Recommendations for {{selectDate}}: </p>
+
+      {% for i in sugg %}
+
+          <div class="{{ i }}"><h4> {{i}} </h4></div><br>
+
+           {% endfor %}
+
+    </div>
+</body>
 
 </html>

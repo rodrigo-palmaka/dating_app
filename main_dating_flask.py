@@ -140,6 +140,21 @@ def dash(id):
 #
 #     return request.args['id']
 
+@app.route('/dashboard/<id>')
+def dashPage2(id):
+    # return render_template('dashboard.html', user=handle.getUser(id)[0][0])
+    return render_template('calendar.html')
+
+@app.route('/dashboard/<id>', methods=["GET", "POST"])
+def dash2(id):
+    if request.method == "POST":
+        selectedDate = request.form['selectDate']
+        objDate = datetime.strptime(selectedDate, '%Y-%m-%d')
+        s = datetime.strftime(objDate,'%b %d, %Y')
+
+        return redirect(url_for('sugg', id=id, selectDate=s))
+    else:
+        return 'pfffft'
 
 
 
