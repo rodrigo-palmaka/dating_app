@@ -1,14 +1,19 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, session
 from find_restaurant import find_restaurant
 import sqlite3
 import db_handler as handle
 import find_events as ev
 from datetime import datetime
+import os
 
 #calendar widget: https://yuilibrary.com/yui/docs/calendar/calendar-simple.html
 app = Flask(__name__)
 simpleCuis =  ['Asian', 'American', 'Breakfast', 'Bubble_Tea', 'Cafe',
         'Fast_Food', 'Indian', 'Italian', 'Mediterranean', 'Mexican', 'Pizza']
+
+rand = os.urandom(102)
+
+app.secret_key = rand
 
 
 @app.route("/")
@@ -122,8 +127,13 @@ def setPrefs(id):
 
 @app.route('/dashboard/<id>')
 def dashPage(id):
+    if session.get('suggestions'):
+        tempList = session['suggestions']
+        session['suggestions'] = None
+        return render_template('suggest.html', selectDate=session.get('date'), sugg= tempList)
     # return render_template('dashboard.html', user=handle.getUser(id)[0][0])
-    return render_template('calendar.html')
+    else:
+        return render_template('calendar.html')
 
 @app.route('/dashboard/<id>', methods=["GET", "POST"])
 def dash(id):
@@ -135,33 +145,8 @@ def dash(id):
         return redirect(url_for('sugg', id=id, selectDate=s))
     else:
         return 'pfffft'
-# @app.route('/dashboard/<id>', methods=["GET", "POST"])
-# def dashHelp():
-#
-#     return request.args['id']
-
-@app.route('/dashboard/<id>')
-def dashPage2(id):
-    # return render_template('dashboard.html', user=handle.getUser(id)[0][0])
-    return render_template('calendar.html')
-
-@app.route('/dashboard/<id>', methods=["GET", "POST"])
-def dash2(id):
-    if request.method == "POST":
-        selectedDate = request.form['selectDate']
-        objDate = datetime.strptime(selectedDate, '%Y-%m-%d')
-        s = datetime.strftime(objDate,'%b %d, %Y')
-
-        return redirect(url_for('sugg', id=id, selectDate=s))
-    else:
-        return 'pfffft'
 
 
-
-# @app.route('/dashboard/<id>/<selectDate>')
-# def suggestPage(id, selectDate):
-#     # user = handle.getUser(id)
-#     return render_template('suggest.html', id=id, selectDate=selectDate)
 
 @app.route('/dashboard/<id>/<selectDate>', methods=["GET", "POST"])
 def sugg(id, selectDate):
@@ -220,10 +205,12 @@ def sugg(id, selectDate):
     for k, v in dicc.items():
         bigList.append(k + ': ' + v)
     # return dicc
+    session['suggestions'] = bigList
+    session['date'] = selectDate
 
         # shortList.append(v['name'])
-    return render_template('suggest.html', selectDate=selectDate, sugg=bigList)
-
+    # return render_template('suggest.html', selectDate=selectDate, sugg=bigList)
+    return redirect(url_for('dash', id=id))
 
 
 

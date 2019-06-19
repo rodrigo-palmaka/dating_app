@@ -101,13 +101,15 @@
     </form>
     </div>
 
-    <div class="">
+    <div class='list'>
 
       <p> Your Date Recommendations for {{selectDate}}: </p>
 
       {% for i in sugg %}
 
-          <div class="{{ i }}"><h4> {{i}} </h4></div><br>
+          <div class ='suggBox'>
+            <h4> {{i}} </h4>
+          </div><br>
 
            {% endfor %}
 

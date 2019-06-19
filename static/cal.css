@@ -73,3 +73,30 @@ border: 1px solid #3762bc; text-shadow: 1px 1px 1px rgba(0,0,0,0.4); box-shadow:
   font-size: 15px;
   font-weight: bold;
 }
+
+.list {
+/*
+
+
+  right: 50%; */
+  position: absolute;
+  top: 70%;
+
+}
+
+.suggBox {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #fff;
+  color: black;
+  padding: 14px 60px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px;
+  word-wrap: break-word;
+}
+
+.restaurant {
+
+}
