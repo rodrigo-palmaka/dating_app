@@ -222,9 +222,6 @@ def sugg(id, selectDate):
     return redirect(url_for('dash', id=id))
 
 
-#//TODO (6/20): FIX a:visited background color style bleeding into navbar <a>
-        # maybe related to YUI?
-        # started happening when defining event and restaurant <a> background-color
 
 # //TODO (6/20): FIX restaurant <img> size and position.
                 # HANDLE case where image is missing, ex. 6/22
