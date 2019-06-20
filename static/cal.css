@@ -74,6 +74,8 @@ border: 1px solid #3762bc; text-shadow: 1px 1px 1px rgba(0,0,0,0.4); box-shadow:
   font-weight: bold;
 }
 
+
+
 .list {
 /*
   right: 50%; */
@@ -91,18 +93,109 @@ border: 1px solid #3762bc; text-shadow: 1px 1px 1px rgba(0,0,0,0.4); box-shadow:
 
 .suggBox {
   width: 50%;
-  right: 50%;
+  height: 170px;
+  position: relative;
   margin: 0 auto;
   background-color: #fff;
-  color: black;
-  padding: 14px 60px;
-  text-align: center;
-  text-decoration: none;
+  padding: 1px 20px;
   display: inline-block;
   margin: 10px;
   word-wrap: break-word;
 }
 
-.restaurant {
+.suggTitle {
+  color: black;
+  font-size: 20px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.suggTitle h5 {
+  font-size: 15px;
+  color:#a1a8b5;
+  font-style: italic;
+  position: absolute;
+  bottom: 75px;
+  /* text-shadow:1px 1px #b8c6db; */
+
+}
+.event a:link{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  transition: background-color 0.2s ease;
+  /* background-color: #939fb2; */
+  background-color: #056cfc;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+
+}
+
+.event a:visited {
+  text-decoration: none;
+  color: white;
+
+}
+
+.event a:hover, a:active{
+  /* background-color: #b8c6db; */
+
+  background-color: #60a2ff;
+
+
+}
+
+.restaurant a:link{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  transition: background-color 0.2s ease;
+  background-color: #fc0505;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+
+}
+
+.restaurant a:visited {
+  text-decoration: none;
+  color: white;
+
+}
+.restaurant a:hover, a:active{
+  background-color: #ff6060;
+}
+
+.times {
+  font-size: 30px;
+  position: absolute;
+  right: 25px;
+}
+
+/* .rating {
+  position: absolute;
+
+
+} */
+
+.rating h3 {
+  position: absolute;
+  top: 9px;
+  right: 90px;
+
+}
+
+.rating h4 {
+  position: absolute;
+  top: -30px;
+  right: 30px;
+  font-size: 35px;
+  color: #939fb2;
+  font-style: italic;
 
 }

@@ -5,17 +5,24 @@ import db_handler as handle
 import find_events as ev
 from datetime import datetime
 import os
+from flask_session import Session
 
 #calendar widget: https://yuilibrary.com/yui/docs/calendar/calendar-simple.html
 app = Flask(__name__)
-simpleCuis =  ['Asian', 'American', 'Breakfast', 'Bubble_Tea', 'Cafe',
-        'Fast_Food', 'Indian', 'Italian', 'Mediterranean', 'Mexican', 'Pizza']
+
 
 rand = os.urandom(102)
 
-app.secret_key = rand
+app.config['SECRET_KEY'] = rand
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config.from_object(__name__)
+Session(app)
 
 
+
+
+simpleCuis =  ['Asian', 'American', 'Breakfast', 'Bubble_Tea', 'Cafe',
+        'Fast_Food', 'Indian', 'Italian', 'Mediterranean', 'Mexican', 'Pizza']
 @app.route("/")
 def main():
     return render_template('signup.html', message='')
@@ -127,10 +134,14 @@ def setPrefs(id):
 
 @app.route('/dashboard/<id>')
 def dashPage(id):
-    if session.get('suggestions'):
-        tempList = session['suggestions']
-        session['suggestions'] = None
-        return render_template('suggest.html', selectDate=session.get('date'), sugg= tempList)
+
+    if session.get('restaurants'):
+        tempEvents = session['events']
+        tempRest = session['restaurants']
+        session['events'] = None
+        session['restaurants'] = None
+        # session.clear()
+        return render_template('suggest.html', selectDate=session.get('date'), sugg= tempEvents, rests= tempRest)
     # return render_template('dashboard.html', user=handle.getUser(id)[0][0])
     else:
         return render_template('calendar.html')
@@ -193,26 +204,30 @@ def sugg(id, selectDate):
         elif b == '4':
             return '$$$$'
 
-    bigList = []
-
     for k, v in dictOf3.items():
-        print(v)
+
         price = pricer(str(v['price_range']))
-        bigList.append(k +': '+ v['location']['address'] + " | " + "User Rating: " + str(v['user_rating']['aggregate_rating']) + " | Price: " + price)
+        v['price_range'] = price
+        # bigList.append(k +': '+ v['location']['address'] + " | " + "User Rating: " + str(v['user_rating']['aggregate_rating']) + " | Price: " + price)
 
     city = handle.getCityName(id)
     liss, dicc = ev.getEvent(city, selectDate)
-    for k, v in dicc.items():
-        bigList.append(k + ': ' + v)
-    # return dicc
-    session['suggestions'] = bigList
+
+    session['events'] = dicc
+    session['restaurants'] = dictOf3
     session['date'] = selectDate
 
-        # shortList.append(v['name'])
+
     # return render_template('suggest.html', selectDate=selectDate, sugg=bigList)
     return redirect(url_for('dash', id=id))
 
 
+#//TODO (6/20): FIX a:visited background color style bleeding into navbar <a>
+        # maybe related to YUI?
+        # started happening when defining event and restaurant <a> background-color
+
+# //TODO (6/20): FIX restaurant <img> size and position.
+                # HANDLE case where image is missing, ex. 6/22
 
 
 # //TODO: add catch [404] if there is no internet connection

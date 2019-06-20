@@ -26,7 +26,10 @@ def getEvent(cityName, date):
     for i in a:
         name = i['title']
         evList.append(name)
-        evDict[name] = i['url']
+        date = datetime.strptime(i['start_time'], '%Y-%m-%d %H:%M:%S')
+        date = date.strftime("%#I %p")
+        evDict[name] = {'url': i['url'], 'venue' : i['venue_name'], 'start': date,
+            'stop': i['stop_time']}
     return evList, evDict
 
     # for i in data['events']:
