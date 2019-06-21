@@ -64,7 +64,7 @@ def log():
         email = request.form['email']
         password = request.form['pass']
 
-
+        print('hello')
         if handle.validateLogin(email, password):
             raw_id = handle.getID(email)
             id = raw_id[0][0]
@@ -140,6 +140,8 @@ def dashPage(id):
         tempRest = session['restaurants']
         session['events'] = None
         session['restaurants'] = None
+        # image.processImgUrl()
+
         # session.clear()
         return render_template('suggest.html', selectDate=session.get('date'), sugg= tempEvents, rests= tempRest)
     # return render_template('dashboard.html', user=handle.getUser(id)[0][0])
@@ -226,6 +228,7 @@ def sugg(id, selectDate):
 # //TODO (6/20): FIX restaurant <img> size and position.
                 # HANDLE case where image is missing, ex. 6/22
 
+# TODO: WHEN hosting, set alarm to track pings so I don't get charged
 
 # //TODO: add catch [404] if there is no internet connection
 

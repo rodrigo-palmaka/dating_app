@@ -154,20 +154,24 @@
             <h4> {{v['user_rating']['aggregate_rating']}} </h4>
           </div>
           <div class='image'>
-            <img src={{v['featured_image']}} alt='Restaurant image' width='100px' height='100px'>
+            {% if v['featured_image'] == '' %}
+              <img src='food_filler.jpg' alt='Restaurant image'>
+            {% else %}
+              <img src={{v['featured_image']}} alt='Restaurant image' width='100px' height='100px'>
+
+            {% endif %}
+
+
+
           </div>
+
         </div>
+
       {% endfor %}
 
     </div>
 
+
 </body>
 
 </html>
-
-<!-- {% if k|length > 40 %}
-  <h4> {{k[:40]}}... </h4>
-
-{% else %}
- <h4> {{k}} </h4>
-{% endif %} -->
