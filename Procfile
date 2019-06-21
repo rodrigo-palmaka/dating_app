@@ -1,1 +1,1 @@
-web: gunicorn app:main_dating_flask
+web: gunicorn app:app
