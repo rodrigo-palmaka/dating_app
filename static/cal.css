@@ -125,7 +125,6 @@ border: 1px solid #3762bc; text-shadow: 1px 1px 1px rgba(0,0,0,0.4); box-shadow:
   left: 20px;
   border-radius: 4px;
   transition: opacity 0.2s ease;
-  /* background-color: #939fb2; */
   background-color: #2a2a72;
   background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
   color: white;

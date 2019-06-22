@@ -63,8 +63,6 @@ def log():
         ##LOG-IN
         email = request.form['email']
         password = request.form['pass']
-
-        print('hello')
         if handle.validateLogin(email, password):
             raw_id = handle.getID(email)
             id = raw_id[0][0]
