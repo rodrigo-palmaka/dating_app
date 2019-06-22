@@ -123,9 +123,11 @@ border: 1px solid #3762bc; text-shadow: 1px 1px 1px rgba(0,0,0,0.4); box-shadow:
   position: absolute;
   bottom: 20px;
   left: 20px;
-  transition: background-color 0.2s ease;
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
   /* background-color: #939fb2; */
-  background-color: #056cfc;
+  background-color: #2a2a72;
+  background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
   color: white;
   padding: 14px 25px;
   text-align: center;
@@ -142,18 +144,26 @@ border: 1px solid #3762bc; text-shadow: 1px 1px 1px rgba(0,0,0,0.4); box-shadow:
 
 .event a:hover, a:active{
   /* background-color: #b8c6db; */
-
-  background-color: #60a2ff;
+  opacity: 0.6;
+  /* background-color: #60a2ff; */
 
 
 }
+
+/* .restaurant {
+  -webkit-transition: background-image 0.2s ease-in-out;
+  transition: background-image 0.2s ease-in-out;
+
+} */
 
 .restaurant a:link{
   position: absolute;
   bottom: 20px;
   left: 20px;
-  transition: background-color 0.2s ease;
-  background-color: #fc0505;
+  transition: opacity 0.2s ease;
+  border-radius: 4px;
+  background-color: #fc9842;
+  background: linear-gradient(315deg, #fc9842 0%, #fe5f75 74%);
   color: white;
   padding: 14px 25px;
   text-align: center;
@@ -162,13 +172,18 @@ border: 1px solid #3762bc; text-shadow: 1px 1px 1px rgba(0,0,0,0.4); box-shadow:
 
 }
 
+
 .restaurant a:visited {
   text-decoration: none;
   color: white;
 
 }
 .restaurant a:hover, a:active{
-  background-color: #ff6060;
+  /* background-color: #ff6060; */
+  /* background-color: #fc9842; */
+  opacity: 0.6;
+  /* background-color: #fc0505; */
+
 }
 
 .times {
