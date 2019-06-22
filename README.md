@@ -1,5 +1,11 @@
 # dating_app
 
+# Run Anywhere!
+
+https://digo-dating-flask.herokuapp.com
+
+## Run Locally
+
 1. Run "py app.py" from directory in terminal.
 2. open browser.
 3. enter "localhost:5000" into url.
