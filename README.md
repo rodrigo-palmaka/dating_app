@@ -1,8 +1,8 @@
 # dating_app
 
-1. Run "py main_dating_flask.py" from directory in terminal.
+1. Run "py app.py" from directory in terminal.
 2. open browser.
-3. enter "(your IP address):5000" into url.
+3. enter "localhost:5000" into url.
 
 __main_dating_flask.py__: 
   the application itself. Combines helper files into application flow.
